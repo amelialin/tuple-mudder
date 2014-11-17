@@ -1,7 +1,3 @@
-from sys import argv
-
-script, word = argv
-
 # ==PSEUDOCODE==
 # if the word has an even num of chars
 	# pair up the chars until word[i] where i = length/2
@@ -24,4 +20,7 @@ def palindrome(word):
 		i += 1 # increment position
 	return True
 
-print palindrome(word)
+if __name__ == '__main__':
+  from sys import argv
+  script, word = argv
+  print palindrome(word)
