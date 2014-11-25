@@ -28,4 +28,6 @@ if __name__ == '__main__':
 # if the word has an ODD num of chars
 	# pair up the chars until word[i] where i = (length - 1)/2
 
-# However, in practice bc of the way math is calculated in Python, you should just be able to take length/2 for both cases; e.g. 5/2 = 2
+# However, in practice bc of the way math is
+# calculated in Python, you should just be able 
+# to take length/2 for both cases; e.g. 5/2 = 2

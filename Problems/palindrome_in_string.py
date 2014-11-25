@@ -4,20 +4,11 @@ from palindrome import palindrome
 
 def palindrome_in_string(string):
 	length_of_string = len(string)
-	i = 0 # set counter = 0
-	# start with full string, evaluate if palindrome if not, check the 2 substrings that are length-1 long, then 3 substrings that are length-2 long, etc. example:
-	j = 0 # cutoff from ends of string
-	while j <= i: # CHECK LATER
-		substring = string[j:length_of_string-(i-j)]
-		if palindrome(substring) == True:
-			print substring
-			return palindrome(substring)
-		else:
-			pass
-		j += 1
-	return False
-# if yes at any point, then store that in a variable and return it
-# if always no, spit out the last 1-character letter in the string
+	for i in range(0, length_of_string):
+		for j in range(0, i + 1):
+			substring = string[j:length_of_string - (i - j)]
+			if palindrome(substring) == True:
+				return substring
 
 if __name__ == '__main__':
  	from sys import argv
@@ -38,4 +29,16 @@ if __name__ == '__main__':
 # if yes at any point, then store that in a variable and return it
 # if always no, spit out the last 1-character letter in the string
 
+# def palindrome_in_string(string):
+# 	length_of_string = len(string)
+# 	print "length of string:", length_of_string
+# 	for i in range(0, length_of_string):
+# 		print "i", i
+# 		for j in range(0, i + 1): # CHECK LATER
+# 			print "j", j
+# 			substring = string[j:length_of_string - (i - j)]
+# 			print "Currently checking:", substring
+# 			if palindrome(substring) == True:
+# 				print "Palindrome!", substring
+# 				return substring
 
