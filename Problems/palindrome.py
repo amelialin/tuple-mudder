@@ -1,3 +1,5 @@
+# Write a function to check if a string is a palindrome.
+
 # ==PSEUDOCODE==
 # if the word has an even num of chars
 	# pair up the chars until word[i] where i = length/2
@@ -20,7 +22,11 @@ def palindrome(word):
 		i += 1 # increment position
 	return True
 
-if __name__ == '__main__':
-  from sys import argv
-  script, word = argv
-  print palindrome(word)
+if __name__ == '__main__': # __name__ is a special variable that is set to have the value '__main__' *if* the script is executing as the main function; e.g. you run '$ python palindrome.py'. By adding this line, you are ensuring that the following lines only execute when you want to run the module as a *program*; they will not be run when we just want to *import* our module somewhere else and call the functions ourselves.
+ 	# KEIR - CORRECT!
+ 	from sys import argv
+ 	script, word = argv
+ 	print palindrome(word)
+
+
+
