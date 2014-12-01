@@ -3,10 +3,9 @@
 from palindrome import palindrome
 
 def palindrome_in_string(string):
-	length_of_string = len(string)
-	for i in range(0, length_of_string):
-		for j in range(0, i + 1):
-			substring = string[j:length_of_string - (i - j)]
+	for i in range(len(string)):
+		for j in range(i + 1):
+			substring = string[j:len(string) - (i - j)]
 			if palindrome(substring) == True:
 				return substring
 
