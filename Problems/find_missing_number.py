@@ -9,6 +9,7 @@ def generate_random_array():
     missing_number = random.randint(1, N) # randomly select number to delete from array
     print "missing_number:", missing_number
     array.remove(missing_number) # delete number from array
+    shuffle(array)
     print array
     return array, N # return finished array
 
@@ -20,12 +21,12 @@ def find_missing_number():
         try:
             array.index(i) # look for that value in the array
         except ValueError: # if not found:
-            # print i
             return i # return the missing number
 
 if __name__ == "__main__":
     from sys import argv
     import random
+    from random import shuffle
     # script, array = argv
     print find_missing_number()
 
