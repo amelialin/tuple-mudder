@@ -13,11 +13,7 @@ def generate_random_array():
 
 def find_missing_number():
     array, N = generate_random_array()
-    for i in range(1, N + 1):
-        try:
-            array.index(i)
-        except ValueError:
-            return i 
+    return (N) * (N + 1) / 2 - sum(array)
 
 if __name__ == "__main__":
     from sys import argv
@@ -51,8 +47,9 @@ def comments_find_missing_number():
     array, N = comments_generate_random_array() # get random array and N
     # print array
     # print N
-    for i in range(1, N + 1): # go through array from 1-N and search array for that value
-        try:
-            array.index(i) # look for that value in the array
-        except ValueError: # if not found:
-            return i # return the missing number
+    # for i in range(1, N + 1): # go through array from 1-N and search array for that value
+    #     try:
+    #         array.index(i) # look for that value in the array
+    #     except ValueError: # if not found:
+    #         return i # return the missing number
+    return (N) * (N + 1) / 2 - sum(array) # find theoretical sum of array elements minus actual sum of array elements
