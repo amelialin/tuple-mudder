@@ -13,7 +13,7 @@ def generate_random_array():
 
 def find_missing_number():
     array, N = generate_random_array()
-    return (N) * (N + 1) / 2 - sum(array)
+    return N * (N + 1) / 2 - sum(array)
 
 if __name__ == "__main__":
     from sys import argv
@@ -53,3 +53,18 @@ def comments_find_missing_number():
     #     except ValueError: # if not found:
     #         return i # return the missing number
     return (N) * (N + 1) / 2 - sum(array) # find theoretical sum of array elements minus actual sum of array elements
+
+# Extra work on this problem from Keir
+#
+#   1. Make the function take a single array argument (passing N is
+#      unnecessary, you can derive N from the length of the array)
+#   2. Give the function a docstring.
+#   3. Write unit tests for the function.
+#      a. Write tests with explicit inputs (e.g. [1, 2, 4])
+#      b. Write tests with generated input (like your generate random array)
+#   4. Extend the script using argparse (longer, means learning argparse)
+#      a. To take a random seed
+#      a. To take N
+#      b. To take an array on the command line
+#
+# Number 4 is optional, but please do 1, 2, and 3.
