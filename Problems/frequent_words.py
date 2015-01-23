@@ -1,0 +1,47 @@
+# Find the three most frequently occurring words in an article.
+
+def frequent_words(original_string):
+    """Takes input as a string, returns list of top 3 most frequent words, 
+    all lowercase, in order of decreasing frequency. Words of equal frequency 
+    are equally likely to be listed. Case insensitive. Input will be stripped 
+    of common punctuation. Input must have at least 3 different words."""
+    word_frequencies = {}
+    string = make_all_lowercase(strip_punctuation(original_string)) 
+        # clean up string
+    words = string.split()
+    for word in words:
+        if word_frequencies.get(word) == None: 
+            word_frequencies[word] = 1 
+        else:
+            word_frequencies[word] += 1
+    kv = word_frequencies.items()
+    if len(kv) < 3: # check for inappropriate input
+        return "Input must have at least 3 different words."
+    k = word_frequencies.keys()
+    v = word_frequencies.values()
+    v_top = [0, 0, 0]
+    k_top = [None, None, None]
+    for i in range(3):
+        top_index = v.index(max(v))
+        top_value = v[top_index]
+        top_key = k[top_index]
+        v_top[i] = top_value
+        k_top[i] = top_key
+        del v[top_index]
+        del k[top_index]
+    return k_top
+
+def make_all_lowercase(string):
+    """Takes a string and outputs same string all in lowercase."""
+    return string.lower()
+
+def strip_punctuation(string):
+    """Removes common punctuation from a string."""
+    stripped_string = "".join(ch for ch in string if ch not in (',', '.', '!', 
+        '?', ':', ';', '-', '/', ')', '('))
+    return stripped_string
+
+if __name__ == "__main__":
+    from sys import argv
+    script, string = argv
+    print frequent_words(string)
