@@ -1,4 +1,6 @@
 # Find the three most frequently occurring words in an article.
+# Computational complexity of O(n), couldn't see anything here that would do
+# anything other than scale linearly with the length of the string.
 
 def frequent_words(original_string):
     """Takes input as a string, returns set of top 3 most frequent words, 
