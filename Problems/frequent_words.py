@@ -19,14 +19,11 @@ def frequent_words(original_string):
         return "Input must have at least 3 different words."
     k = word_frequencies.keys()
     v = word_frequencies.values()
-    v_top = [0, 0, 0]
-    k_top = [None, None, None]
+    k_top = set()
     for i in range(3):
         top_index = v.index(max(v))
-        top_value = v[top_index]
         top_key = k[top_index]
-        v_top[i] = top_value
-        k_top[i] = top_key
+        k_top.update([top_key]) # why do I need the '[]'?
         del v[top_index]
         del k[top_index]
     return k_top
