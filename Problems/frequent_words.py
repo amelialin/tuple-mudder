@@ -1,9 +1,9 @@
 # Find the three most frequently occurring words in an article.
 
 def frequent_words(original_string):
-    """Takes input as a string, returns list of top 3 most frequent words, 
-    all lowercase, in order of decreasing frequency. Words of equal frequency 
-    are equally likely to be listed. Case insensitive. Input will be stripped 
+    """Takes input as a string, returns set of top 3 most frequent words, 
+    all lowercase. Words of equal frequency treated equally when deciding which
+    to include in the top 3. Case insensitive. Input will be stripped 
     of common punctuation. Input must have at least 3 different words."""
     word_frequencies = {}
     string = make_all_lowercase(strip_punctuation(original_string)) 
