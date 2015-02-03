@@ -1,9 +1,14 @@
-#  Implement a simple hash table. Implement three functions; define semantics where unclear. Keys and values are strings only.
+#  Implement a simple hash table. Implement three functions; define semantics 
+# where unclear. Keys and values are strings only.
 # hash_string(string) -> integer
 # hash_create() -> table
 # hash_insert(table, key, value)
 # hash_get(table, key) -> value
 # hash_remove(table, key) 
+
+# Computational complexity...maybe would only depend on if what the complexity 
+# of hash(string) is, for increasing length of string? Looks like O(n) 
+# according to the internets.
 
 def hash_create():
     """Creates a table with 10 empty buckets."""
@@ -31,10 +36,4 @@ if __name__ == "__main__":
     from sys import argv
     script, key, value = argv
     table = hash_create()
-    print hash_insert(table, 'test0', 0)
-    print hash_insert(table, 'test1', 1)
-    print hash_insert(table, 'test2', 2)
-    print hash_insert(table, 'test3', 3)
-    print hash_insert(table, 'test4', 4)
-    print hash_insert(table, 'test0', 100)
-    print hash_insert(table, 'test4', 400)
+    print hash_insert(table, key, value)
