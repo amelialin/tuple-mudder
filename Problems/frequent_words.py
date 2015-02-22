@@ -2,45 +2,34 @@
 # Computational complexity of O(n), couldn't see anything here that would do
 # anything other than scale linearly with the length of the string.
 
-def frequent_words(original_string):
+def frequent_words(string):
     """Takes input as a string, returns set of top 3 most frequent words, 
     all lowercase. Words of equal frequency treated equally when deciding which
     to include in the top 3. Case insensitive. Input will be stripped 
     of common punctuation. Input must have at least 3 different words."""
     word_frequencies = {}
-    string = make_all_lowercase(strip_punctuation(original_string)) 
-        # clean up string
-    words = string.split()
+    words = strip_punctuation(string).lower().split()
     for word in words:
         if word_frequencies.get(word) == None: 
             word_frequencies[word] = 1 
         else:
             word_frequencies[word] += 1
-    kv = word_frequencies.items()
-    if len(kv) < 3: # check for inappropriate input
+    if len(word_frequencies) < 3: # check for inappropriate input
         return "Input must have at least 3 different words."
-    k = word_frequencies.keys()
-    v = word_frequencies.values()
-    k_top = set()
-    for i in range(3):
-        top_index = v.index(max(v))
-        top_key = k[top_index]
-        k_top.update([top_key]) # why do I need the '[]'?
-        del v[top_index]
-        del k[top_index]
-    return k_top
+    items = word_frequencies.items()
+    items.sort(key=lambda key_value: key_value[1], reverse=True)
+    return set(key_value[0] for key_value in items[:3])
 
-def make_all_lowercase(string):
-    """Takes a string and outputs same string all in lowercase."""
-    return string.lower()
+    # "lambda key_value: key_value[1]" lambda function with single variable key_value, and then what you want to do with that key_value
+    # reverse = go from largest to smallest instead of smallest to largest
+    # sort expects to see a function that takes one parameter, lambda is commonly used
+    # no need to give "key" a value if you wanting to sort the default thing, the first part of the tuple
+    # for slicing, think of the : as "the farthest thing towards that end", in the format (x:y) where x is the beginning of the slice and y is the end of the slice
 
 def strip_punctuation(string):
     """Removes common punctuation from a string."""
-    stripped_string = "".join(ch for ch in string if ch not in (',', '.', '!', 
-        '?', ':', ';', '-', '/', ')', '('))
-    return stripped_string
+    return "".join(ch for ch in string if ch not in ',.!?:;-/)(')
 
 if __name__ == "__main__":
     from sys import argv
-    script, string = argv
-    print frequent_words(string)
+    print frequent_words(argv[1])
