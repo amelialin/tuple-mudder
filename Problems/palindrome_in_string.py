@@ -3,6 +3,10 @@
 from palindrome import palindrome
 
 def palindrome_in_string(string):
+	""" Trying out using doctest.
+	>>> palindrome_in_string("aba")
+	'aba'
+	"""
 	for i in range(len(string)):
 		for j in range(i + 1):
 			substring = string[j:len(string) - (i - j)]
