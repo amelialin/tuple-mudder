@@ -1,0 +1,36 @@
+$def with (greeting, name)
+$# define variables to be used as inputs in this file
+$ number = 2
+
+<html>
+    <head>
+        <title>Amelia's Amazing Todo List</title>
+    </head>
+<body>
+
+$if greeting:
+    I just wanted to say <em style="color: green; font-size: 2em;">$greeting $name</em>. ${number + 2}
+$else:
+    <em>Hello</em>, world!
+
+$for i in range(3):
+    <br> I like $i. 
+
+$ a = range(10)
+$while a:
+    <br> Look at $a.pop()!
+
+$def tr(values):
+    $for v in values:
+        <tr><td>$v</td></tr>
+
+$# By default, Templetor uses web.websafe filter to do HTML-encoding. To turnoff filter use : after $. For example:
+<table border="1">
+$:tr(range(3))
+</table>
+
+<br>
+<a href="/addtodo">Add a Todo Item</a>
+
+</body>
+</html>
