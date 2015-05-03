@@ -61,7 +61,7 @@ class todos(object):
         return render.todos(todos)
 
 class upload(object): # upload an image and save to disk
-    def GET(self): # verbatim HTML
+    def GET(self): # verbatim HTML to create form
         return """<html><head></head><body>
             <form method="POST" enctype="multipart/form-data" action="">
             <input type="file" name="myfile" />
@@ -71,10 +71,18 @@ class upload(object): # upload an image and save to disk
             </body></html>"""
     def POST(self):
         x = web.input(myfile={})
-        web.debug(x['myfile'].filename) # This is the filename
-        web.debug(x['myfile'].value) # This is the file contents
-        web.debug(x['myfile'].file.read()) # Or use a file(-like) object...what does this mean??
-        raise web.seeother('/upload')
+        filedir = '/Users/amelialin/Dropbox/Code/python/projects/todolist/uploads' # full path of dir to save to
+        if 'myfile' in x: # check if file-object is created
+            filepath=x.myfile.filename.replace('\\','/') # replaces Windows-style slashes with Linux ones
+            filename=filepath.split('/')[-1] # splits up the whole filepath name of the uploaded file, using slashes as delimiters, and chooses the last part (filename with extension)
+            fout = open(filedir + '/' + filename,'w') # creates file in specified dir where uploaded file should be stored
+            fout.write(x.myfile.file.read()) # writes to file
+            fout.close() # closes file, upload done
+        # the following 3 optional lines output info to the terminal
+        # web.debug(x['myfile'].filename) # This is the filename
+        # web.debug(x['myfile'].value) # This is the file contents
+        # web.debug(x['myfile'].file.read()) # Or use a file(-like) object...what does this mean??
+        raise web.seeother('/upload') # redirects back to /upload upon form submission
 
 if __name__ == "__main__":
     app.run()
