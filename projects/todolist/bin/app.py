@@ -5,7 +5,8 @@ urls = (
     '/', 'index', # a mapping; this means that when someone hits the homepage, lpthw.web will go find the class named 'index' and load it
     # here you would list more page mappings
     '/addtodo', 'addtodo',
-    '/todos', 'todos'
+    '/todos', 'todos',
+    '/upload', 'upload'
 )
 
 app = web.application(urls, globals())
@@ -58,6 +59,22 @@ class todos(object):
     def GET(self):
         todos = db.select('todo') # selects the todo table
         return render.todos(todos)
+
+class upload(object): # upload an image and save to disk
+    def GET(self): # verbatim HTML
+        return """<html><head></head><body>
+            <form method="POST" enctype="multipart/form-data" action="">
+            <input type="file" name="myfile" />
+            <br/>
+            <input type="submit" />
+            </form>
+            </body></html>"""
+    def POST(self):
+        x = web.input(myfile={})
+        web.debug(x['myfile'].filename) # This is the filename
+        web.debug(x['myfile'].value) # This is the file contents
+        web.debug(x['myfile'].file.read()) # Or use a file(-like) object...what does this mean??
+        raise web.seeother('/upload')
 
 if __name__ == "__main__":
     app.run()
