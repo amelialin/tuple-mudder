@@ -1,8 +1,0 @@
-#!/usr/bin/env python
-
-# The #! symbol is sometimes pronounced shebang and the simple explanation is that the command on that line tells the shell to use python to run the script. If you leave off the ".py" filename extension, then the user of the script doesn't need to care what interpreter is needed to run the script. See wikipedia shebang article.
-
-# counts to 10
-
-for i in range(1,11):
-    print i
